@@ -1,0 +1,45 @@
+---
+title: "BronxZooMap"
+author: "Gunther"
+date: "2023-09-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Bronx Zoo
+Location of some of the animals in the Bronx Zoo
+
+
+```{r}
+library(leaflet)
+# my_map <- leaflet() %>% 
+#   addTiles()
+# 
+# my_map
+
+# Tigers 40.85130932646403, -73.87702052946744
+# Gorillas 40.84825832905829, -73.88099605984723
+# Lions 40.847061585736256, -73.87801716007117
+# Bears 40.84893366111787, -73.87753633689145
+# Flamingos 40.84923318828472, -73.88060512046674
+# Penguins 40.85398265214811, -73.87895995077062
+# Bison 40.85376731447453, -73.87594162635565
+
+df <- data.frame(
+  lat = c(40.85130932646403,40.84825832905829,40.847061585736256,40.84893366111787,40.84923318828472,40.85398265214811,40.85376731447453),
+  lng = c(-73.87702052946744,-73.88099605984723,-73.87801716007117,-73.87753633689145,-73.88060512046674,-73.87895995077062,-73.87594162635565)
+)
+
+animals <- c(
+  'Tigers', 'Gorillas','Lions','Bears','Flamingos','Penguins','Bison'
+)
+
+df %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(popup = animals)
+
+```
